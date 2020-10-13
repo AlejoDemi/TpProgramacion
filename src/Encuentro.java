@@ -13,7 +13,7 @@ public class Encuentro {
             String cuil2=notificaciones.get(i).substring(0,11);
             String fecha=notificaciones.get(i).substring(24);
             int decision=Scanner.getInt("Tuvo usted contacto con "+Ciudadano.getName(cuil2)+" de CUIL "+cuil2+
-                    " en la fecha:" +fecha+"\n1-Si\n2-No\n");
+                    " en la fecha: " +fecha+"?\n1-Si\n2-No\n");
             if(decision==1){
                 Anses.contact(cuilCont,cuil2);
                 Anses.checkContagio(cuilCont,cuil2);

@@ -115,7 +115,7 @@ public class Anses {
     public static void afectado(String cuil, int sintoma){
         ArrayList<String>sintomas=sintomas();
         try {
-            FileWriter fileWriter = new FileWriter("Afectados",true);
+            FileWriter fileWriter = new FileWriter("src\\Afectados",true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(cuil + "/" + sintomas.get(sintoma-1) + "\n");
             bufferedWriter.close();

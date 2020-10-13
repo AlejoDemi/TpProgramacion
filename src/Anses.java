@@ -54,7 +54,7 @@ public class Anses {
 
     public static void save(ArrayList<Ciudadano>ciudadanos){
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\archivos");
+            FileWriter fileWriter = new FileWriter("src\\archivos");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String admin;
             String block;
@@ -84,7 +84,7 @@ public class Anses {
     public static ArrayList<String> sintomas(){
         ArrayList<String> sintomas=new ArrayList<>();
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\Sintomas");
+            FileReader fileReader=new FileReader("src\\Sintomas");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!=null){
@@ -101,7 +101,7 @@ public class Anses {
 
     public static void saveSintom(ArrayList<String> sintomas){
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\sintomas");
+            FileWriter fileWriter = new FileWriter("src\\sintomas");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < sintomas.size(); i++) {
                 bufferedWriter.write(sintomas.get(i) + "\n");
@@ -115,7 +115,7 @@ public class Anses {
     public static void afectado(String cuil, int sintoma){
         ArrayList<String>sintomas=sintomas();
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\Afectados",true);
+            FileWriter fileWriter = new FileWriter("Afectados",true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(cuil + "/" + sintomas.get(sintoma-1) + "\n");
             bufferedWriter.close();
@@ -130,7 +130,7 @@ public class Anses {
         ArrayList<String> sintomas=sintomas();
         String sintoma2=sintomas.get(sintoma-1);
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\Afectados");
+            FileReader fileReader=new FileReader("src\\Afectados");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while (line!=null){
@@ -152,7 +152,7 @@ public class Anses {
             }
         }
         try{
-            FileWriter fileWriter=new FileWriter("D:\\Austral\\TpProg2\\src\\Afectados");
+            FileWriter fileWriter=new FileWriter("src\\Afectados");
             BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
             for (int i = 0; i < afectados.size(); i++) {
                 bufferedWriter.write(afectados.get(i)+"\n");
@@ -165,7 +165,7 @@ public class Anses {
 
     public static void notificar(LocalDate fecha,String cuil,String cuilCont){
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\Notificaciones", true);
+            FileWriter fileWriter = new FileWriter("src\\Notificaciones", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(cuil + "/" + cuilCont +"/"+ fecha + "\n");
             bufferedWriter.close();
@@ -178,7 +178,7 @@ public class Anses {
     public static ArrayList<String> checkNot(String cuil){
         ArrayList<String> notificaciones=new ArrayList<>();
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\Notificaciones");
+            FileReader fileReader=new FileReader("src\\Notificaciones");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line != null) {
@@ -206,7 +206,7 @@ public class Anses {
             }
         }
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\Notificaciones");
+            FileWriter fileWriter = new FileWriter("src\\Notificaciones");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < notificaciones.size(); i++) {
                 bufferedWriter.write(notificaciones.get(i)+"\n");
@@ -216,7 +216,7 @@ public class Anses {
             System.out.println(e.getMessage());
         }
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\Contacto",true);
+            FileWriter fileWriter = new FileWriter("src\\Contacto",true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(contacto + "\n");
             bufferedWriter.close();
@@ -234,7 +234,7 @@ public class Anses {
             }
         }
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\Notificaciones");
+            FileWriter fileWriter = new FileWriter("src\\Notificaciones");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < notificaciones.size(); i++) {
                 bufferedWriter.write(notificaciones.get(i)+"\n");
@@ -244,7 +244,7 @@ public class Anses {
             System.out.println(e.getMessage());
         }
         try{
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\Rechazos",true);
+            FileWriter fileWriter = new FileWriter("src\\Rechazos",true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(cuil + "\n");
             bufferedWriter.close();
@@ -258,7 +258,7 @@ public class Anses {
     public static void checkBlock(String cuil){
        ArrayList<String> rechazos=new ArrayList<>();
         try {
-            FileReader fileReader = new FileReader("D:\\Austral\\TpProg2\\src\\Rechazos");
+            FileReader fileReader = new FileReader("src\\Rechazos");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
             while (line != null) {
@@ -290,7 +290,7 @@ public class Anses {
         String contacto="";
         String covid="";
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\Contacto");
+            FileReader fileReader=new FileReader("src\\Contacto");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!= null){
@@ -312,7 +312,7 @@ public class Anses {
             System.out.println(e.getMessage());
         }
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\PositiveCovid");
+            FileReader fileReader=new FileReader("src\\PositiveCovid");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!= null){
@@ -352,7 +352,7 @@ public class Anses {
     private static void addCovid(String cuil1,String cuil2){
         String covid="";
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\PositiveCovid");
+            FileReader fileReader=new FileReader("src\\PositiveCovid");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!= null){
@@ -374,7 +374,7 @@ public class Anses {
             System.out.println(e.getMessage());
         }
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\PositiveCovid",true);
+            FileWriter fileWriter = new FileWriter("src\\PositiveCovid",true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(covid+"/"+LocalDate.now()+"\n");
             bufferedWriter.close();
@@ -388,7 +388,7 @@ public class Anses {
         ArrayList<String> afectados = new ArrayList<>();
         int x = 0;
         try {
-            FileReader fileReader = new FileReader("D:\\Austral\\TpProg2\\src\\Afectados");
+            FileReader fileReader = new FileReader("src\\Afectados");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
             while (line != null) {
@@ -416,7 +416,7 @@ public class Anses {
 
     private static void positive(String cuil){
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\PositiveCovid",true);
+            FileWriter fileWriter = new FileWriter("src\\PositiveCovid",true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(cuil+"/"+LocalDate.now()+"\n");
             bufferedWriter.close();
@@ -428,7 +428,7 @@ public class Anses {
     private static void cleanAfectado(String cuil){
         ArrayList<String> afectados=new ArrayList<>();
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\Afectados");
+            FileReader fileReader=new FileReader("src\\Afectados");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while (line!=null && !line.equals("")){
@@ -449,7 +449,7 @@ public class Anses {
            }
         }
         try {
-            FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\Afectados");
+            FileWriter fileWriter = new FileWriter("src\\Afectados");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < afectados.size(); i++) {
                if(afectados.get(i)!=null) {
@@ -481,7 +481,7 @@ public class Anses {
         }
 
             try {
-                FileWriter fileWriter = new FileWriter("D:\\Austral\\TpProg2\\src\\archivos",true);
+                FileWriter fileWriter = new FileWriter("src\\archivos",true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 bufferedWriter.write("\n"+name + "/" + cuil + "/" + cel + "/" + admin + "/" + block);
                 bufferedWriter.close();
@@ -494,7 +494,7 @@ public class Anses {
     private static ArrayList<String> listaS(){
         ArrayList<String> ciudadanos=new ArrayList<>();
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\archivos");
+            FileReader fileReader=new FileReader("src\\archivos");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!=null){
@@ -511,7 +511,7 @@ public class Anses {
     private static ArrayList<String> listaAnsesS(){
         ArrayList<String> ciudadanos=new ArrayList<>();
         try{
-            FileReader fileReader=new FileReader("D:\\Austral\\TpProg2\\src\\dataSet");
+            FileReader fileReader=new FileReader("src\\dataSet");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!=null){

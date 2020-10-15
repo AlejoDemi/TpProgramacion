@@ -339,8 +339,14 @@ public class Anses {
               Period period2 = Period.between(covidDate, contactDate);
               if (period1.getDays() >= 0 && period1.getDays() < 3) {
                   addCovid(cuilCont, cuil);
-              } else if (period2.getDays() >= 0 && period2.getDays() < 3) {
+                  System.out.println("Es muy probable que usted padezca Covid-19, tome las precauciones necesarias.\n" +
+                          "Encontraras mas informacion en el siguiente link:\n" +
+                          "https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses#:~:text=sintomas");
+              } else if (period2.getDays() >= 0 ) {
                   addCovid(cuilCont, cuil);
+                  System.out.println("Es muy probable que usted padezca Covid-19, tome las precauciones necesarias.\n" +
+                          "Encontraras mas informacion en el siguiente link:\n" +
+                          "https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses#:~:text=sintomas");
               }
           }catch(StringIndexOutOfBoundsException e){
 
@@ -411,8 +417,11 @@ public class Anses {
         if(x>1){
             positive(cuil);
             cleanAfectado(cuil);
+            System.out.println("Es muy probable que usted padezca Covid-19, tome las precauciones necesarias.\n" +
+                    "Encontraras mas informacion en el siguiente link:\n" +
+                    "https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses#:~:text=sintomas");
         }
-    }//Revisa si el afectado llego a los 3 sintoas, mandando al archivo Positivo de ser asi
+    }//Revisa si el afectado llego a los 2 sintomas, mandando al archivo Positivo de ser asi
 
     private static void positive(String cuil){
         try {
@@ -547,6 +556,5 @@ public class Anses {
         }
         return ciudadanos;
     }// Convierte el arreglo de String en ciudadanos(base anses)
-
 
 }

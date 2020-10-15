@@ -1,3 +1,4 @@
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -7,6 +8,7 @@ public class Pantalla {
         System.out.println("***************************************");
         System.out.println("Bienvenido!");
         int decision=Scanner.getInt("Registratme 1\nYa tengo cuenta 2\n");
+        clean();
         return decision;
     }
 
@@ -14,6 +16,7 @@ public class Pantalla {
         System.out.println("***************************************");
         String cuil=Scanner.getString("Ingrese su CUIL\n");
         String cel=Scanner.getString("Ingrese su celular\n");
+        clean();
         return cuil+cel;
     }
 
@@ -21,6 +24,7 @@ public class Pantalla {
         System.out.println("***************************************");
         String cuil= Scanner.getString("Por favor, ingrese su CUIL\n");
         String cel= Scanner.getString("Por favor, ingrese su celular\n");
+        clean();
         return cuil+cel;
     }
 
@@ -28,6 +32,7 @@ public class Pantalla {
         System.out.println("***************************************");
         System.out.println("Usted esta registrado como administrador.");
         int decision=Scanner.getInt("Si desea entrar como tal ,ingrese 1.\nSi desea entrar como ciudadano, ingrese 2\n");
+        clean();
         return decision;
     }
 
@@ -40,6 +45,7 @@ public class Pantalla {
                 "5_Salir\n");
 
         int decision = Scanner.getInt("Seleccione una accion.\n");
+        clean();
         return decision;
     }
 
@@ -52,8 +58,15 @@ public class Pantalla {
     public static LocalDate ContactoFecha(){
         int mes=Scanner.getInt("Ingrese el mes en el que efectuo el contacto\n");
         int dia=Scanner.getInt("Ingrese el dia en el que efectuo el contacto\n");
-        LocalDate fecha=LocalDate.of(2020,mes,dia);
-        return fecha;
+        clean();
+       try {
+           LocalDate fecha = LocalDate.of(2020, mes, dia);
+           return fecha;
+       }catch(DateTimeException e){
+
+       }
+       return LocalDate.now();
+
     }
 
     public static int sintomaSI(){
@@ -64,6 +77,7 @@ public class Pantalla {
             System.out.println((i+1)+"__"+sintomas.get(i));
         }
         int seleccion=Scanner.getInt("Seleccione el sintoma que padece\n");
+        clean();
         return seleccion;
     }
 
@@ -75,6 +89,7 @@ public class Pantalla {
             System.out.println((i+1)+"__"+sintomas.get(i));
         }
         int seleccion=Scanner.getInt("Seleccione el sintoma que ya no padece\n");
+        clean();
         return seleccion;
     }
 
@@ -87,18 +102,21 @@ public class Pantalla {
                 "5_Datos\n" +
                 "6_Salir\n");
         int decision = Scanner.getInt("Seleccione una accion.\n");
+        clean();
         return decision;
     }
 
     public static String block(){
         System.out.println("***************************************");
         String ciudadano=Scanner.getString("Ingrese el CUIL o celular del ciudadano a bloquear\n");
+        clean();
         return  ciudadano;
     }
 
     public static String desblock(){
         System.out.println("***************************************");
         String ciudadano=Scanner.getString("Ingrese el CUIL o celular del ciudadano a desbloquear\n");
+        clean();
         return  ciudadano;
     }
 
@@ -110,6 +128,7 @@ public class Pantalla {
             System.out.println((i+1)+"__"+sintomas.get(i));
         }
         String sintoma=Scanner.getString("Ingrese el nombre del nuevo sintoma\n");
+        clean();
         return  sintoma;
     }
 
@@ -121,6 +140,7 @@ public class Pantalla {
             System.out.println((i+1)+"__"+sintomas.get(i));
         }
         int sintoma=Scanner.getInt("Ingrese el numero del sintoma a eliminar\n");
+        clean();
         return  sintoma;
     }
 

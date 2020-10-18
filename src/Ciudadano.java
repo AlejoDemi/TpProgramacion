@@ -103,14 +103,14 @@ public class Ciudadano {
         }
     }
 
-    public static String getName(String cuil){
+    public static Ciudadano getCiu(String cuil){
         ArrayList<Ciudadano>ciudadanos=Anses.lista();
         for (int i = 0; i < ciudadanos.size(); i++) {
             if(ciudadanos.get(i).cuil.equals(cuil)){
-                return ciudadanos.get(i).nombre;
+                return ciudadanos.get(i);
             }
         }
-        return "-1";
+        return null;
     }
 
 }

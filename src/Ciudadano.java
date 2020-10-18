@@ -7,13 +7,15 @@ public class Ciudadano {
     String cel;
     boolean admin;
     boolean block;
+    String ubicacion;
 
-    public Ciudadano(String nombre, String cuil, String cel, boolean admin, boolean block) {
+    public Ciudadano(String nombre, String cuil, String cel, boolean admin, boolean block,String ubicacion) {
         this.nombre = nombre;
         this.cuil = cuil;
         this.cel = cel;
         this.admin = admin;
         this.block = block;
+        this.ubicacion=ubicacion;
     }
 
     public static int checkData(String cuilnum, String celnum, ArrayList<Ciudadano> ciudadanos) {

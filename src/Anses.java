@@ -12,7 +12,7 @@ public class Anses {
         ArrayList<Ciudadano> ciudadanos = new ArrayList<>();
 
         for (int i = 0; i < data.size(); i++) {
-            String[] datasplt = data.get(i).split("/", 5);
+            String[] datasplt = data.get(i).split("/", 6);
             try {
                 if ("true".equals(datasplt[3])) {
                     admin = true;
@@ -24,7 +24,7 @@ public class Anses {
                 } else {
                     block = false;
                 }
-                ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block));
+                ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block,datasplt[5]));
             } catch (ArrayIndexOutOfBoundsException e) {
             }
 
@@ -72,8 +72,9 @@ public class Anses {
                 String nombre=ciudadanos.get(i).nombre;
                 String cuil=ciudadanos.get(i).cuil;
                 String cel=ciudadanos.get(i).cel;
+                String ubicacion=ciudadanos.get(i).ubicacion;
 
-                bufferedWriter.write(nombre+"/"+cuil+"/"+cel+"/"+admin+"/"+block + "\n");
+                bufferedWriter.write(nombre+"/"+cuil+"/"+cel+"/"+admin+"/"+block +"/"+ubicacion+ "\n");
             }
             bufferedWriter.close();
         }catch (IOException e){
@@ -478,6 +479,7 @@ public class Anses {
         String cel = a.cel;
         String admin;
         String block;
+        String ubicacion=a.ubicacion;
         if (a.admin){
             admin ="true";
         }else {
@@ -492,7 +494,7 @@ public class Anses {
             try {
                 FileWriter fileWriter = new FileWriter("src\\archivos",true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                bufferedWriter.write("\n"+name + "/" + cuil + "/" + cel + "/" + admin + "/" + block);
+                bufferedWriter.write("\n"+name + "/" + cuil + "/" + cel + "/" + admin + "/" + block+"/"+ubicacion);
                 bufferedWriter.close();
             }catch(IOException e){
                 System.out.println(e.getMessage());
@@ -540,7 +542,7 @@ public class Anses {
         ArrayList<Ciudadano>ciudadanos=new ArrayList<>();
 
         for (int i = 0; i < data.size(); i++) {
-            String[] datasplt=data.get(i).split("/",5);
+            String[] datasplt=data.get(i).split("/",6);
 
             if("true".equals(datasplt[3])) {
                 admin = true;
@@ -552,7 +554,7 @@ public class Anses {
             }else{
                 block=false;
             }
-            ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block));
+            ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block,datasplt[5]));
         }
         return ciudadanos;
     }// Convierte el arreglo de String en ciudadanos(base anses)

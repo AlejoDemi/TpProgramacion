@@ -63,14 +63,13 @@ public class Pantalla {
            LocalDate fecha = LocalDate.of(2020, mes, dia);
            return fecha;
        }catch(DateTimeException e){
-
+           return LocalDate.now();
        }
-       return LocalDate.now();
 
     }
 
     public static int sintomaSI(){
-        ArrayList<String> sintomas=Anses.sintomas();
+        ArrayList<String> sintomas=Covid19.sintomas();
         System.out.println("***************************************");
         System.out.println("Sintomas:");//Lista de sintomas
         for (int i = 0; i <sintomas.size() ; i++) {
@@ -82,7 +81,7 @@ public class Pantalla {
     }
 
     public static int sintomaNO(){
-        ArrayList<String> sintomas=Anses.sintomas();
+        ArrayList<String> sintomas=Covid19.sintomas();
         System.out.println("***************************************");
         System.out.println("Sintomas:");//Lista de sintomas
         for (int i = 0; i <sintomas.size() ; i++) {
@@ -121,7 +120,7 @@ public class Pantalla {
     }
 
     public static String newSintoma(){
-        ArrayList<String> sintomas=Anses.sintomas();
+        ArrayList<String> sintomas=Covid19.sintomas();
         System.out.println("***************************************");
         System.out.println("Sintomas:");//Lista de sintomas
         for (int i = 0; i <sintomas.size() ; i++) {
@@ -133,7 +132,7 @@ public class Pantalla {
     }
 
     public static int removeSintoma(){
-        ArrayList<String> sintomas=Anses.sintomas();
+        ArrayList<String> sintomas=Covid19.sintomas();
         System.out.println("***************************************");
         System.out.println("Sintomas:");//Lista de sintomas
         for (int i = 0; i <sintomas.size() ; i++) {

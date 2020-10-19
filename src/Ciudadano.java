@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Ciudadano {
@@ -51,7 +54,7 @@ public class Ciudadano {
                     }
                 }
             }
-            Anses.save(ciudadanos);
+            save(ciudadanos);
         } else if (dato.length() == 10) {
             for (int i = 0; i < ciudadanos.size(); i++) {
                 if ((ciudadanos.get(i)).cel.equals(dato)) {
@@ -60,7 +63,7 @@ public class Ciudadano {
                     }
                 }
             }
-            Anses.save(ciudadanos);
+            save(ciudadanos);
         }
     }
 
@@ -73,7 +76,7 @@ public class Ciudadano {
                     }
                 }
             }
-            Anses.save(ciudadanos);
+            save(ciudadanos);
 
         } else if (dato.length() == 10) {
             for (int i = 0; i < ciudadanos.size(); i++) {
@@ -83,34 +86,64 @@ public class Ciudadano {
                     }
                 }
             }
-            Anses.save(ciudadanos);
+            save(ciudadanos);
         }
     }
 
     public static void addSintom(String sintoma){
-        ArrayList<String> sintomas=Anses.sintomas();
+        ArrayList<String> sintomas=Covid19.sintomas();
         sintomas.add(sintoma);
-        Anses.saveSintom(sintomas);
+        Covid19.saveSintom(sintomas);
     }
 
     public static void removeSintom(int sintoma){
-        ArrayList<String> sintomas=Anses.sintomas();
+        ArrayList<String> sintomas=Covid19.sintomas();
         try {
             sintomas.remove(sintoma - 1);
-            Anses.saveSintom(sintomas);
+            Covid19.saveSintom(sintomas);
         }catch(IndexOutOfBoundsException e){
 
         }
     }
 
     public static Ciudadano getCiu(String cuil){
-        ArrayList<Ciudadano>ciudadanos=Anses.lista();
+        ArrayList<Ciudadano>ciudadanos=Anses.listaCiudadanos();
         for (int i = 0; i < ciudadanos.size(); i++) {
             if(ciudadanos.get(i).cuil.equals(cuil)){
                 return ciudadanos.get(i);
             }
         }
         return null;
+    }
+
+    public static void save(ArrayList<Ciudadano>ciudadanos){
+        try {
+            FileWriter fileWriter = new FileWriter("src\\archivos");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String admin;
+            String block;
+            for (int i = 0; i < ciudadanos.size(); i++) {
+                if(ciudadanos.get(i).admin){
+                    admin="true";
+                }else{
+                    admin="false";
+                }
+                if (ciudadanos.get(i).block){
+                    block="true";
+                }else{
+                    block="false";
+                }
+                String nombre=ciudadanos.get(i).nombre;
+                String cuil=ciudadanos.get(i).cuil;
+                String cel=ciudadanos.get(i).cel;
+                String ubicacion=ciudadanos.get(i).ubicacion;
+
+                bufferedWriter.write(nombre+"/"+cuil+"/"+cel+"/"+admin+"/"+block +"/"+ubicacion+ "\n");
+            }
+            bufferedWriter.close();
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
 }

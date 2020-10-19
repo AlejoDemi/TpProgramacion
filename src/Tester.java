@@ -5,7 +5,7 @@ public class Tester {
     public static void main(String[] args) {
 
         Pantalla.clean();
-        ArrayList<Ciudadano>ciudadanos=Anses.lista();
+        ArrayList<Ciudadano>ciudadanos=Anses.listaCiudadanos();
 
         while(true){
 
@@ -16,13 +16,13 @@ public class Tester {
             if(registro==1){
                 String dato=Pantalla.nuevo();
                 Anses.nuevoCiu(dato,ciudadanos);
-                ciudadanos=Anses.lista();
+                ciudadanos=Anses.listaCiudadanos();
                  cuil=dato.substring(0,11);
-                 cel = dato.substring(11, dato.length());
+                 cel = dato.substring(11);
             }else {
                 String datos = Pantalla.inicio();
                  cuil = datos.substring(0, 11);
-                 cel = datos.substring(11, datos.length());
+                 cel = datos.substring(11);
             }
 
             int ciudadanonum = Ciudadano.checkData(cuil, cel, ciudadanos);
@@ -34,21 +34,25 @@ public class Tester {
                         case 1:
                             String contCuil = Pantalla.contactoCuil();
                             LocalDate fecha = Pantalla.ContactoFecha();
-                            Encuentro.send(cuil,contCuil,fecha);
+                            Encuentro encuentro=new Encuentro(cuil,contCuil,fecha);
+                            encuentro.send();
                             decision = Pantalla.Ciudadano();
                             break;
                         case 2:
                             int nuevoSin = Pantalla.sintomaSI();
-                            Anses.afectado(cuil,nuevoSin);
+                            Covid19 paciente=new Covid19(cuil,nuevoSin);
+                            paciente.afectado();
                             decision = Pantalla.Ciudadano();
                             break;
                         case 3:
                             int viejoSin = Pantalla.sintomaNO();
-                            Anses.desafectado(cuil,viejoSin);
+                            Covid19 paciente1=new Covid19(cuil,viejoSin);
+                            paciente1.desafectado();
                             decision = Pantalla.Ciudadano();
                             break;
                         case 4:
-                            Encuentro.check(cuil);
+                            Contacto contacto=new Contacto(cuil);
+                            contacto.checkContact();
                             decision = Pantalla.Ciudadano();
                             break;
                         default:

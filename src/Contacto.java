@@ -21,8 +21,8 @@ public class Contacto {
             String cuil=datasplt[0];
             String fecha=datasplt[2];
 
-            int decision=Scanner.getInt("Tuvo usted contacto con "+ Objects.requireNonNull(Ciudadano.getCiu(datasplt[0])).nombre+" de CUIL "+datasplt[0]+
-                    " en la fecha: " +datasplt[2]+"?\n1-Si\n2-No\n");
+            int decision=Scanner.getInt("Tuvo usted contacto con "+ Objects.requireNonNull(Ciudadano.getCiu(cuil)).nombre+" de CUIL "+datasplt[0]+
+                    " en la fecha: " +fecha+"?\n1-Si\n2-No\n");
             Pantalla pantalla=new Pantalla();
             pantalla.clean();
             if(decision==1){
@@ -58,12 +58,12 @@ public class Contacto {
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line != null) {
-                try {
-                    if ( line.substring(12, 23).equals(cuil)) {
+                String[] datasplt = line.split("/", 3);
+                    if ( datasplt[1].equals(cuil)) {
                         notificaciones.add(line);
                     }
-                } catch (StringIndexOutOfBoundsException e) { }
-                line = bufferedReader.readLine();
+                    line=bufferedReader.readLine();
+
             }
             bufferedReader.close();
         }catch (IOException e){

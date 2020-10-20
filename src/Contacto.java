@@ -23,7 +23,8 @@ public class Contacto {
 
             int decision=Scanner.getInt("Tuvo usted contacto con "+ Objects.requireNonNull(Ciudadano.getCiu(datasplt[0])).nombre+" de CUIL "+datasplt[0]+
                     " en la fecha: " +datasplt[2]+"?\n1-Si\n2-No\n");
-            Pantalla.clean();
+            Pantalla pantalla=new Pantalla();
+            pantalla.clean();
             if(decision==1){
                 contact(this.cuilCont,cuil);
                 checkContagio(this.cuilCont,cuil);
@@ -34,7 +35,7 @@ public class Contacto {
 
     }
 
-    private static void contact(String cuil, String cuilCont){
+    private static void contact(String cuilCont, String cuil){
         ArrayList<String>notificaciones=checkNot(cuilCont);
         String contacto="";
         for (int i = 0; i < notificaciones.size(); i++) {

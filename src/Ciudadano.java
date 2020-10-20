@@ -22,11 +22,12 @@ public class Ciudadano {
     }
 
     public static int checkData(String cuilnum, String celnum, ArrayList<Ciudadano> ciudadanos) {
+        Pantalla pantalla=new Pantalla();
         for (int i = 0; i < ciudadanos.size(); i++) {
             if ((ciudadanos.get(i)).cuil.equals(cuilnum) && (ciudadanos.get(i)).cel.equals(celnum)) {
                 if (ciudadanos.get(i).admin) {
                     System.out.println("Bienvenido/a," + ciudadanos.get(i).nombre);
-                    int decision = Pantalla.inicioAdmin();
+                    int decision = pantalla.inicioAdmin();
                     if (decision == 1) {
                         return 2;
                     } else {

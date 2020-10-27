@@ -6,7 +6,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Contacto {
+public class Contacto extends LectorArchivos {
 
     String cuilCont;
 
@@ -45,9 +45,9 @@ public class Contacto {
                 notificaciones.remove(i);
             }
         }
-        Anses.escribirLista("src\\Notificaciones",notificaciones);
+        escribirLista("src\\Notificaciones",notificaciones);
         String toAdd=contacto + "\n";
-        Anses.añadir("src\\Contacto",toAdd);
+        añadir("src\\Contacto",toAdd);
 
     }
 
@@ -81,9 +81,9 @@ public class Contacto {
                 notificaciones.remove(i);
             }
         }
-        Anses.escribirLista("src\\Notificaciones",notificaciones);
+        escribirLista("src\\Notificaciones",notificaciones);
         String toAdd=cuil + "\n";
-        Anses.añadir("src\\Rechazos",toAdd);
+        añadir("src\\Rechazos",toAdd);
         checkBlock(cuil);
 
     }
@@ -110,7 +110,7 @@ public class Contacto {
             System.out.println(e.getMessage());
         }
         String toAdd=covid+"/"+ LocalDate.now()+"\n";
-        Anses.añadir("src\\PositiveCovid",toAdd);
+        añadir("src\\PositiveCovid",toAdd);
     }
 
     private static void checkContagio(String cuilCont,String cuil){
@@ -178,7 +178,7 @@ public class Contacto {
     }
 
     private static void checkBlock(String cuil){
-        ArrayList<String> rechazos=Anses.createList("src\\Rechazos");
+        ArrayList<String> rechazos=createList("src\\Rechazos");
         int x=0;
         for (int i = 0; i < rechazos.size(); i++) {
             if(rechazos.get(i).equals(cuil)){

@@ -1,4 +1,1 @@
-* No usar metodos estáticos, sino de instancia, de modo de usar los verdaderos principios del paradigma
-* Hacer abstracción para lectura de archivos, sino siempre repiten el código de BufferedReaders, y splits, etc. Y al leer no podemos retornar listas de strings sino instancias de ciudadanos correctos x ej. Tampoco se comprenden los nombres de los métodos (x ej son confunsos listaAnses, listaAnsesS, listaS, etc)
-* Cuidado con hacer catch de una exception, y mostrarla por pantalla y no volver a hacer el throw, eso se llama enmascarar excepciones
-* No hay tests
+

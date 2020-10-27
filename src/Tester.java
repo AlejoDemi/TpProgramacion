@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class Tester {
     public static void main(String[] args) {
-
         Pantalla pantalla=new Pantalla();
         pantalla.clean();
         ArrayList<Ciudadano>ciudadanos=Anses.listaCiudadanos();

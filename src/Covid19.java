@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Covid19 {
+public class Covid19 extends LectorArchivos {
 
     String cuil;
     int sintoma;
@@ -12,19 +12,18 @@ public class Covid19 {
     }
 
     public static ArrayList<String> sintomas(){
-        ArrayList<String> sintomas=Anses.createList("src\\Sintomas");
-        return  sintomas;
+        return createList("src\\Sintomas");
     }
 
     public void afectado(){
         ArrayList<String>sintomas=sintomas();
         String toAdd=this.cuil + "/" + sintomas.get(this.sintoma-1) + "\n";
-        Anses.añadir("src\\Afectados",toAdd);
+        añadir("src\\Afectados",toAdd);
         checkCovid();
     }
 
     public void desafectado(){
-        ArrayList<String> afectados=Anses.createList("src\\Afectados");
+        ArrayList<String> afectados=createList("src\\Afectados");
         ArrayList<String> sintomas=sintomas();
         String eleccion=sintomas.get(this.sintoma-1);
 
@@ -34,11 +33,11 @@ public class Covid19 {
                 afectados.remove(i);
         }
 
-        Anses.escribirLista("src\\Afectados",afectados);
+        escribirLista("src\\Afectados",afectados);
     }
 
     private void checkCovid() {
-        ArrayList<String> afectados = Anses.createList("src\\Afectados");
+        ArrayList<String> afectados =createList("src\\Afectados");
         int x = 0;
         for (int i = 0; i < afectados.size(); i++) {
             String[] datasplt = afectados.get(i).split("/", 2);
@@ -50,7 +49,7 @@ public class Covid19 {
         if(x>1){
 
             String toAdd=this.cuil+"/"+ LocalDate.now()+"\n";
-            Anses.añadir("src\\PositiveCovid",toAdd);
+            añadir("src\\PositiveCovid",toAdd);
             cleanAfectado();
             System.out.println("Es muy probable que usted padezca Covid-19, tome las precauciones necesarias.\n" +
                     "Encontraras mas informacion en el siguiente link:\n" +
@@ -59,7 +58,7 @@ public class Covid19 {
     }
 
     private  void cleanAfectado(){
-        ArrayList<String> afectados=Anses.createList("src\\Afectados");
+        ArrayList<String> afectados=createList("src\\Afectados");
 
         for (int i = 0; i <afectados.size() ; i++) {
             String[] datasplt = afectados.get(i).split("/", 2);
@@ -67,12 +66,12 @@ public class Covid19 {
             afectados.set(i,null);
             }
         }
-        Anses.escribirLista("src\\Afectados",afectados);
+        escribirLista("src\\Afectados",afectados);
 
     }
 
     public static void saveSintom(ArrayList<String> sintomas){
-        Anses.escribirLista("src\\Sintomas",sintomas);
+        escribirLista("src\\Sintomas",sintomas);
     }
 
 }

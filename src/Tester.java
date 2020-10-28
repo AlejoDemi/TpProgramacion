@@ -86,7 +86,7 @@ public class Tester {
                             decision = pantalla.pantallaAdmin();
                             break;
                         case 5:
-                            System.out.println("Datos");
+                            pantalla.datos();
                             decision = pantalla.pantallaAdmin();
                             break;
                         default:

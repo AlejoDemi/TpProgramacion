@@ -145,6 +145,22 @@ public class Pantalla {
         return  sintoma;
     }
 
+    public void datos(){
+        int decision=Scanner.getInt("1_Revisar estadísticas Covid-19\n2_Mapa con brotes Covid-19\n");
+        ArrayList<String>covid=Covid19.positivos();
+        clean();
+        if (decision==1){
+            System.out.println("Cuil afectado/fecha afeccion/ubicacion");
+            System.out.println();
+            for (int i = 0; i <covid.size() ; i++) {
+                System.out.println(i+1+")_"+covid.get(i));
+            }
+            System.out.println();
+        int terminado=Scanner.getInt("Presione cualquier numero,seguido de 'enter' para salir.") ;
+        }
+        clean();
+    }
+
     public  void clean(){
         for(int i=0;i<30;i++){
             System.out.println();

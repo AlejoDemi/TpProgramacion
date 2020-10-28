@@ -3,29 +3,18 @@ import java.util.ArrayList;
 
 public class Anses extends LectorArchivos {
 
+
     public static ArrayList<Ciudadano> listaCiudadanos() {
         ArrayList<String> data = createList("src\\archivos");
         boolean admin;
         boolean block;
         ArrayList<Ciudadano> ciudadanos = new ArrayList<>();
 
-        for (int i = 0; i < data.size(); i++) {
-            String[] datasplt = data.get(i).split("/", 6);
-            try {
-                if ("true".equals(datasplt[3])) {
-                    admin = true;
-                } else {
-                    admin = false;
-                }
-                if ("true".equals(datasplt[4])) {
-                    block = true;
-                } else {
-                    block = false;
-                }
-                ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block,datasplt[5]));
-            } catch (ArrayIndexOutOfBoundsException e) {
-            }
-
+        for (String datum : data) {
+            String[] datasplt = datum.split("/", 6);
+                admin = "true".equals(datasplt[3]);
+                block = "true".equals(datasplt[4]);
+                ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, datasplt[5]));
         }
         return ciudadanos;
     }//crear lista de ciudadanos a partir de ListaS(String)
@@ -35,16 +24,16 @@ public class Anses extends LectorArchivos {
         String cuilnum = data.substring(0, 11);
         String celnum = data.substring(11);
         int x = 1;
-        for (int j = 0; j < ciudadanos.size(); j++) {
-            if (cuilnum.equals(ciudadanos.get(j).cuil)) {
+        for (Ciudadano ciudadano : ciudadanos) {
+            if (cuilnum.equals(ciudadano.cuil)) {
                 System.out.println("Usted ya esta registrado/a,");
                 x = 0;
             }
         }
         if (x == 1) {
-            for (int i = 0; i < ciudadanosA.size(); i++) {
-                if (cuilnum.equals(ciudadanosA.get(i).cuil) && celnum.equals(ciudadanosA.get(i).cel)) {
-                    RegistrarCiudadanoAuxiliar(ciudadanosA.get(i));
+            for (Ciudadano ciudadano : ciudadanosA) {
+                if (cuilnum.equals(ciudadano.cuil) && celnum.equals(ciudadano.cel)) {
+                    RegistrarCiudadanoAuxiliar(ciudadano);
                 }
             }
         }
@@ -80,20 +69,12 @@ public class Anses extends LectorArchivos {
         boolean block;
         ArrayList<Ciudadano>ciudadanos=new ArrayList<>();
 
-        for (int i = 0; i < data.size(); i++) {
-            String[] datasplt=data.get(i).split("/",6);
+        for (String datum : data) {
+            String[] datasplt = datum.split("/", 6);
 
-            if("true".equals(datasplt[3])) {
-                admin = true;
-            }else{
-                admin=false;
-            }
-            if("true".equals(datasplt[4])){
-                block=true;
-            }else{
-                block=false;
-            }
-            ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block,datasplt[5]));
+            admin = "true".equals(datasplt[3]);
+            block = "true".equals(datasplt[4]);
+            ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, datasplt[5]));
         }
         return ciudadanos;
     }// Convierte el arreglo de String en ciudadanos(base anses)

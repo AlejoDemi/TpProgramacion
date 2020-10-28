@@ -11,6 +11,10 @@ public class Covid19 extends LectorArchivos {
         this.sintoma=sintoma;
     }
 
+    public static ArrayList<String> positivos(){
+        return  createList("src\\PositiveCovid");
+    }
+
     public static ArrayList<String> sintomas(){
         return createList("src\\Sintomas");
     }
@@ -30,7 +34,7 @@ public class Covid19 extends LectorArchivos {
         for (int i = 0; i < afectados.size(); i++) {
             String[] datasplt = afectados.get(i).split("/", 2);
             if (datasplt[0].equals(this.cuil) && datasplt[1].equals(eleccion))
-                afectados.remove(i);
+                afectados.set(i,null);
         }
 
         escribirLista("src\\Afectados",afectados);

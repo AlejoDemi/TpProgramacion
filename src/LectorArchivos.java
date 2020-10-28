@@ -12,7 +12,7 @@ public abstract class LectorArchivos {
             FileReader fileReader=new FileReader(file);
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
-            while(line!=null){
+            while(line!=null && !line.equals("")){
                 list.add(line);
                 line=bufferedReader.readLine();
             }

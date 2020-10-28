@@ -47,8 +47,8 @@ public class Covid19 extends LectorArchivos {
 
             }
         if(x>1){
-
-            String toAdd=this.cuil+"/"+ LocalDate.now()+"\n";
+            String ubicacion=Ciudadano.getCiu(cuil).ubicacion;
+            String toAdd=cuil+"/"+ LocalDate.now()+"/"+ubicacion+"\n";
             añadir("src\\PositiveCovid",toAdd);
             cleanAfectado();
             System.out.println("Es muy probable que usted padezca Covid-19, tome las precauciones necesarias.\n" +

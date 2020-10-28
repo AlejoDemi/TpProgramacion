@@ -109,7 +109,8 @@ public class Contacto extends LectorArchivos {
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
-        String toAdd=covid+"/"+ LocalDate.now()+"\n";
+        String ubicacion=Ciudadano.getCiu(covid).ubicacion;
+        String toAdd=covid+"/"+ LocalDate.now()+"/"+ubicacion+"\n";
         añadir("src\\PositiveCovid",toAdd);
     }
 
@@ -154,7 +155,7 @@ public class Contacto extends LectorArchivos {
         }
         try {
             String fechaCont = contacto.substring(24);
-            String fechaCovid = covid.substring(12);
+            String fechaCovid = covid.substring(12,22);
             LocalDate contactDate = LocalDate.parse(fechaCont);
             LocalDate covidDate = LocalDate.parse(fechaCovid);
             Period period1 = Period.between(contactDate, covidDate);
